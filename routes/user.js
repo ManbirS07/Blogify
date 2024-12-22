@@ -2,8 +2,6 @@ const express=require("express")
 const User=require("../models/user")
 const router=express.Router()
 
-const {validateToken}=require("../services/auth")
-const {checkCookieandUser}=require("../middlewares/auth")
 
 router.get("/login",(req,res)=>
 {

@@ -8,6 +8,7 @@ function checkCookieandUser(cookieName)
         try{
             const user=validateToken(tokenValue)
             req.user=user
+            return next()
         }
         catch(err)
         {
