@@ -1,4 +1,5 @@
 const mongoose=require("mongoose")
+const { applyTimestamps } = require("./user")
 
 const blogSchema=({
     title:
@@ -18,6 +19,9 @@ const blogSchema=({
     author:
     {
         type:mongoose.Schema.Types.ObjectId,
-        ref:"user"
+        ref:"User",
     }
 })
+
+const Blog=mongoose.model("Blog",blogSchema)
+module.exports=Blog
