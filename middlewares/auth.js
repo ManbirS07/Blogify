@@ -5,10 +5,10 @@ function checkCookieandUser(cookieName)
     return(req,res,next)=>
     {
         const tokenValue=req.cookies[cookieName]
-        try{
+        try
+        {
             const user=validateToken(tokenValue)
             req.user=user
-            return next()
         }
         catch(err)
         {
