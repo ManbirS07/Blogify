@@ -24,12 +24,13 @@ app.use("/user",userRoute)
 app.use("/blog",blogRoute)
 app.get("/",async(req,res)=>
 {
-    const userID=req.body.author
-    const allBlogs=await Blog.find({userID})
+    const allBlogs=await Blog.find({})
+    console.log(allBlogs)
     res.render("home",
     {
         user:req.user,
-        blogs:allBlogs
+        blogs:allBlogs,
     })
 })
 app.listen(port,()=>console.log(`Server listening on port ${port}`))
+

@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-const { applyTimestamps } = require("./user")
+
 
 const blogSchema=({
     title:
