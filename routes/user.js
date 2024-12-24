@@ -1,5 +1,6 @@
 const express=require("express")
 const User=require("../models/user")
+const Blog = require("../models/blog")
 const router=express.Router()
 
 
@@ -50,5 +51,18 @@ router.get("/logout",async(req,res)=>
     //to logout we simple delete the session cookie
     res.clearCookie("token").redirect("/")
 })
+
+
+router.get("/profile",async(req,res)=>
+    {   
+        console.log(req.user.id)
+        const blogss=await Blog.find({author:req.user.id})
+        return res.render("profile",
+        {
+            user:req.user,
+            flag:false,
+            blogss,
+        })
+    })
 
 module.exports = router;

@@ -20,9 +20,9 @@ const storage = multer.diskStorage({
 
 router.get("/getblog",(req,res)=>
 {
-    console.log(req.user)
      res.render("addBlog",{
             user:req.user,
+            flag:true,
         }
     )
 })
@@ -38,11 +38,10 @@ router.get("/:id",async(req,res)=>
     blog,
     user:req.user, //so that the user stays signed-in
     userr,
-    comments
+    comments,
+    flag:true,
   })
 })
-
-
 router.post("/addBlog",upload.single("coverImage"),async(req,res)=>
 {
     const {title,body}=req.body
@@ -52,8 +51,6 @@ router.post("/addBlog",upload.single("coverImage"),async(req,res)=>
         coverImageUrl:`/uploads/${req.file.filename}`,//filename or destination??
         author: req.user.id,
     })
-    console.log(blog);
-    
     return res.redirect("/")
 })
 module.exports=router
@@ -68,3 +65,5 @@ router.post("/comment/:blogId",async(req,res)=>
   })
   return res.redirect(`/blog/${req.params.blogId}`)
 })
+
+

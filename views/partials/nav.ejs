@@ -19,8 +19,12 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+                <% if (locals.flag) { %>
+                  <li><a class="dropdown-item" href="/user/profile">View Profile</a></li>
+                <% } %>
               </ul>
             </li>
+
           <% } else {%>
             <li class="nav-item">
               <a class="nav-link" href="/user/signup">Create Account</a>
